@@ -522,6 +522,58 @@ module QingStor
 
       public
 
+      # list_multipart_uploads: List multipart uploads in the bucket.
+      # Documentation URL: https://docs.qingcloud.com/qingstor/api/bucket/list_multipart_uploads.html
+      #
+      # == Options
+      #
+      # * +:delimiter+ - Put all keys that share a common prefix into a list
+      # * +:limit+ - Results count limit
+      # * +:marker+ - Limit results to keys that start at this marker
+      # * +:prefix+ - Limits results to keys that begin with the prefix
+      #
+      def list_multipart_uploads(options = {})
+        options.deep_stringify_keys!
+        request = list_multipart_uploads_request options
+        request.send
+      end
+
+      def list_multipart_uploads_request(options = {})
+        options.deep_stringify_keys!
+        input = {
+          config:           config,
+          properties:       properties,
+          api_name:         'List Multipart Uploads',
+          request_method:   'GET',
+          request_uri:      '/<bucket-name>?uploads',
+          request_params:   {
+            'delimiter' => options['delimiter'],
+            'limit'     => options['limit'],
+            'marker'    => options['marker'],
+            'prefix'    => options['prefix'],
+          },
+          request_headers:  {
+          },
+          request_elements: {
+          },
+          request_body:     nil,
+          status_code:      [
+            200, # OK
+          ],
+        }
+
+        list_multipart_uploads_input_validate input
+        Request.new input
+      end
+
+      private
+
+      def list_multipart_uploads_input_validate(input)
+        input.deep_stringify_keys!
+      end
+
+      public
+
       # list_objects: Retrieve the object list in a bucket.
       # Documentation URL: https://docs.qingcloud.com/qingstor/api/bucket/get.html
       #
@@ -907,10 +959,6 @@ module QingStor
 
           unless !x['id'].nil? && !x['id'].to_s.empty?
             raise ParameterRequiredError.new('id', 'statement')
-          end
-
-          unless !x['resource'].nil? && !x['resource'].to_s.empty?
-            raise ParameterRequiredError.new('resource', 'statement')
           end
 
           unless !x['user'].nil? && !x['user'].to_s.empty?
