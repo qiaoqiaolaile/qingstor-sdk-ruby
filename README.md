@@ -163,6 +163,18 @@ log_level: 'warn'
 ## Change Log
 All notable changes to QingStor SDK for Ruby will be documented here.
 
+### [v1.9.3] - 2017-03-15
+
+#### Added
+
+- Allow user to append additional info to User-Agent.
+- Add request parameters for GET Object.
+- Add IP address conditions for bucket policy.
+
+### Fixed
+
+- Resource is not mandatory in bucket policy statement.
+
 ### [v1.9.2] - 2017-01-23
 
 #### Fixed
@@ -201,5 +213,6 @@ All notable changes to QingStor SDK for Ruby will be documented here.
 The Apache License (Version 2.0, January 2004).
 
 [master]: https://github.com/yunify/qingstor-sdk-ruby/tree/master
+[v1.9.3]: https://github.com/yunify/qingstor-sdk-ruby/compare/v1.9.2...v1.9.3
 [v1.9.2]: https://github.com/yunify/qingstor-sdk-ruby/compare/v1.9.1...v1.9.2
 [v1.9.1]: https://github.com/yunify/qingstor-sdk-ruby/compare/v1.9.0...v1.9.1

@@ -16,6 +16,6 @@
 
 module QingStor
   module SDK
-    VERSION = '1.9.2'.freeze
+    VERSION = '1.9.3'.freeze
   end
 end
